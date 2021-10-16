@@ -1,0 +1,58 @@
+ATM: simularea funtionalitatilor unui ATM.
+O lista de carduri care contine toate carduril esi este impartita
+pe submultimi de carduri dupa numarul cardului, fiecare card are informatiile
+despre card si o lista cu istoria tranzactiilor.
+Sunt 2 tipuri de operatii pentru cilenti si administrator(ATM).
+Operatiile ATM-ului:
+add_card <CARD_NUMBER> <PIN> <EXPIRY_DATE> <CVV> - adaugare card
+delete_card <CARD_NUMBER> - stergere card
+reverse_transaction <CARD_NUMBER_SOURCE> <CARD_NUMBER_DEST> <SUM> - anularea
+unei tranzactii
+unblock_card <CARD_NUMBER> - deblocare card
+show [<CARD_NUMBER>] - afisare card, carduri
+Operatii clienti:
+insert_card <CARD_NUMBER> <PIN> - inserare card in bancomat
+recharge <CARD_NUMBER> <SUM> - depunere numerar
+cash_withdrawal <CARD_NUMBER> <SUM> - retragere numerar
+balance_inquiry <CARD_NUMBER> - vizualizare sold curent
+transfer_funds <CARD_NUMBER_SOURCE> <CARD_NUMBER_DEST> <SUM>- tranzactie
+catre alt cont
+pin_change <CARD_NUMBER> <NEW_PIN> - schimbare pin
+cancel <CARD_NUMBER> - retragere card din bancomat
+
+aplicatia citeste din input.in si scrie in output.out
+
+Am inceput cu citirea din fisier:
+1.Citesc numarul maxim de carduri
+2.Citesc fiecare linie din fisier
+Dupa fiecare o linii o sparg dupa spatii pentru a extrage parametrii
+Verific ce am pe pozita 0, ce operatie am de facut..
+Daca am de adaugat un card, verfic daca deja nu exista si il adaug,
+cautand pozitia si alocand memoria care nu exista.
+Daca am de afisat, verfic daca am un anumit card sau toata lista si afiseaz
+Daca am de sters un card , ii caut pozita in LC si apoi il gasesc in LSC, 
+actualizez relatiile si eliberez cardul;
+Daca am de inserat un card ,verific numarul de inserari gresite sau
+corectitudinea cardului afisez mesajul aferent si creez instoria
+corespunzatoare dupa care o adaug.
+Daca am de retras un card, gasesc cardul formez istoria si o adaug
+Daca am de dezblocat un card, caut cardul ii actualizez statusul si
+numarul de inserari incorecte apoi adaug istoria
+Daca am de schimbat pinul, verific daca pinul contine 4 caractere si daca is
+cifre, duap care actualizez pinul
+Daca am de consulat soldul, caut cardul afisez soldul si adaug in istorie
+Daca am de reincarcat contul, verific daca suma este un multiplu a lui 10,
+caut caurdul, formez noua suma si actualizez soldul
+Daca am de retras bani, verfic daca suma este multiplu de 10,  dupa care 
+verific daca exista resurse necesare, reactualizez suma si adaug istoria
+Daca am de transferat bani, verific daca suma este multimplu de 10 , dupa
+care caut cardul sursa si destinatie, verific existenta resurselor pe cardul
+sursa, actualizez sumele pe ambele conturi si adaug la ambele istoria
+Daca am de anulat o tranzactie, caut cardul sursa si destinatie, verific
+daca exista resurse pe contul destinatie, dupa care actualizez sumele si 
+sters istoria de pe cardul destinatie si adaug cardului sursa istoria
+respectiva.
+La repozitionarea cardurilor am parcurs lista LC si apoi fiecare lista LSC
+pana am parcurs toate cardurile care existau, si le-am repozitionat, parcurgand
+din nou lista LC si gasind intrarea respectiva actualizind inceputul listei.
+Am folosit in structura de card block(care imi indica nr de inserari incorecte)
